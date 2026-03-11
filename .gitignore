@@ -10,3 +10,4 @@ skills/
 # Design documents
 zerocopy-ipc-architecture.md
 PARALLEL_DEV_GUIDE.md
+run-agents.sh
