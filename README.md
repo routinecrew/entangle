@@ -311,17 +311,12 @@ cargo +nightly miri test --workspace
 
 ## Contributing
 
-entangle uses a **parallel multi-agent development** architecture. Each crate has a dedicated agent with its own skill file and branch:
+Contributions are welcome! Each crate is independently testable — pick any layer that interests you.
 
-| Agent | Crate | Branch |
-|-------|-------|--------|
-| A | `entangle-platform` | `agent-a/platform` |
-| B | `entangle-lockfree` | `agent-b/lockfree` |
-| C | `entangle-transport` | `agent-c/transport` |
-| D | `entangle` | `agent-d/service` |
-| E | `entangle-derive` | `agent-e/derive` |
-
-See [`PARALLEL_DEV_GUIDE.md`](PARALLEL_DEV_GUIDE.md) for the full coordination protocol.
+```bash
+cargo build --workspace
+cargo test --workspace
+```
 
 ---
 
