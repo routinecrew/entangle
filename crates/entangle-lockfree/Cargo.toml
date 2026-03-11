@@ -1,0 +1,12 @@
+[package]
+name = "entangle-lockfree"
+version = "0.1.0"
+edition = "2021"
+description = "Lock-free data structures for entangle zero-copy IPC"
+
+[dependencies]
+tracing = { workspace = true }
+
+[dev-dependencies]
+loom = { workspace = true }
+proptest = { workspace = true }

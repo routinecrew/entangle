@@ -1,0 +1,19 @@
+[package]
+name = "entangle"
+version = "0.1.0"
+edition = "2021"
+description = "Zero-copy IPC library for Rust — inspired by iceoryx2, redesigned from scratch"
+
+[dependencies]
+entangle-platform = { workspace = true }
+entangle-lockfree = { workspace = true }
+entangle-transport = { workspace = true }
+entangle-derive = { workspace = true }
+serde = { workspace = true }
+ron = { workspace = true }
+thiserror = { workspace = true }
+tracing = { workspace = true }
+
+[dev-dependencies]
+tracing-subscriber = { workspace = true }
+proptest = { workspace = true }

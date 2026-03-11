@@ -1,0 +1,14 @@
+[package]
+name = "entangle-transport"
+version = "0.1.0"
+edition = "2021"
+description = "Zero-copy transport layer for entangle IPC"
+
+[dependencies]
+entangle-platform = { workspace = true }
+entangle-lockfree = { workspace = true }
+thiserror = { workspace = true }
+tracing = { workspace = true }
+
+[dev-dependencies]
+proptest = { workspace = true }

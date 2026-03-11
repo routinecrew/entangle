@@ -1,0 +1,13 @@
+[package]
+name = "entangle-derive"
+version = "0.1.0"
+edition = "2021"
+description = "Derive macros for entangle zero-copy IPC (ZeroCopySafe)"
+
+[lib]
+proc-macro = true
+
+[dependencies]
+proc-macro2 = { workspace = true }
+quote = { workspace = true }
+syn = { workspace = true }

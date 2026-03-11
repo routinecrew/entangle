@@ -1,0 +1,17 @@
+// entangle 기본 설정 파일
+(
+    shm_root: "/tmp/entangle/",
+    node_name: None,
+    default_pubsub_qos: (
+        history_size: 1,
+        max_publishers: 8,
+        max_subscribers: 16,
+        subscriber_overflow: Overwrite,
+        max_loaned_samples: 4,
+        buffer_size: 64,
+    ),
+    default_event_qos: (
+        max_notifiers: 8,
+        max_listeners: 16,
+    ),
+)
