@@ -8,6 +8,15 @@ members = [
 ]
 resolver = "2"
 
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/kangsan/entangle"
+homepage = "https://github.com/kangsan/entangle"
+keywords = ["ipc", "zero-copy", "shared-memory", "lock-free", "inter-process"]
+categories = ["concurrency", "os::unix-apis"]
+
 [workspace.dependencies]
 # 플랫폼
 nix = { version = "0.29", features = ["mman", "fs", "signal", "process"] }
@@ -29,6 +38,9 @@ loom = "0.7"
 
 # 테스트
 proptest = "1.0"
+
+# 벤치마크
+criterion = { version = "0.5", features = ["html_reports"] }
 
 # derive 매크로
 proc-macro2 = "1.0"

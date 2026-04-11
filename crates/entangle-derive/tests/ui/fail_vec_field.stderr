@@ -1,0 +1,39 @@
+error[E0277]: the trait bound `HasVec: Copy` is not satisfied
+ --> tests/ui/fail_vec_field.rs:5:8
+  |
+5 | struct HasVec {
+  |        ^^^^^^ unsatisfied trait bound
+  |
+help: the trait `Copy` is not implemented for `HasVec`
+ --> tests/ui/fail_vec_field.rs:5:1
+  |
+5 | struct HasVec {
+  | ^^^^^^^^^^^^^
+note: required by a bound in `entangle::contracts::ZeroCopySafe`
+ --> $WORKSPACE/crates/entangle/src/contracts.rs
+  |
+  | pub unsafe trait ZeroCopySafe: Copy + Send + Sync + 'static {}
+  |                                ^^^^ required by this bound in `ZeroCopySafe`
+
+error[E0277]: the trait bound `Vec<u8>: entangle::contracts::ZeroCopySafe` is not satisfied
+ --> tests/ui/fail_vec_field.rs:6:11
+  |
+6 |     data: Vec<u8>,
+  |           ^^^^^^^ the trait `entangle::contracts::ZeroCopySafe` is not implemented for `Vec<u8>`
+  |
+  = help: the following other types implement trait `entangle::contracts::ZeroCopySafe`:
+            HasVec
+            [T; N]
+            bool
+            f32
+            f64
+            i128
+            i16
+            i32
+          and $N others
+note: required by a bound in `_assert_zero_copy_safe`
+ --> tests/ui/fail_vec_field.rs:3:10
+  |
+3 | #[derive(ZeroCopySafe)]
+  |          ^^^^^^^^^^^^ required by this bound in `_assert_zero_copy_safe`
+  = note: this error originates in the derive macro `ZeroCopySafe` (in Nightly builds, run with -Z macro-backtrace for more info)

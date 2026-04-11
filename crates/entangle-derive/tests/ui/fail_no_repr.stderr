@@ -1,0 +1,5 @@
+error: ZeroCopySafe requires #[repr(C)] or #[repr(transparent)]
+ --> tests/ui/fail_no_repr.rs:4:8
+  |
+4 | struct NoRepr {
+  |        ^^^^^^

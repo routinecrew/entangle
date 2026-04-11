@@ -8,6 +8,12 @@ pub struct MockZeroCopyChannel {
     return_queue: Mutex<VecDeque<u64>>,
 }
 
+impl Default for MockZeroCopyChannel {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl MockZeroCopyChannel {
     pub fn new() -> Self {
         Self {

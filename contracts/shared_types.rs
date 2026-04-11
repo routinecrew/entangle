@@ -58,7 +58,7 @@ pub struct ServiceName(String);
 // ============================================================
 
 /// 세그먼트 ID + 로컬 오프셋으로 구성된 포인터 오프셋.
-/// 비트 레이아웃: [segment_id:16][offset:48]
+/// 비트 레이아웃: \[segment_id:16\]\[offset:48\]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(transparent)]
 pub struct PointerOffset(u64);

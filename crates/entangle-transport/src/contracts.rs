@@ -1,6 +1,8 @@
-// contracts/shared_types.rs에서 복사한 전송 계층 관련 타입
+use thiserror::Error;
 
-/// 세그먼트 ID + 로컬 오프셋
+/// Segment ID + local offset packed into a single u64.
+///
+/// Bit layout: \[segment_id:16\]\[offset:48\]
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(transparent)]
 pub struct PointerOffset(u64);
@@ -18,9 +20,17 @@ impl PointerOffset {
     pub fn offset(self) -> usize {
         (self.0 & 0x0000_FFFF_FFFF_FFFF) as usize
     }
+
+    pub fn raw(self) -> u64 {
+        self.0
+    }
+
+    pub fn from_raw(raw: u64) -> Self {
+        Self(raw)
+    }
 }
 
-/// 채널 상태
+/// Channel state.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u8)]
 pub enum ChannelState {
@@ -29,16 +39,29 @@ pub enum ChannelState {
     Disconnected = 2,
 }
 
-/// Loan 에러
-#[derive(Debug)]
+/// Loan error.
+#[derive(Error, Debug, Clone)]
 pub enum LoanError {
+    #[error("out of memory in data segment")]
     OutOfMemory,
+    #[error("max loaned samples ({max}) exceeded")]
     ExceedsMaxLoans { max: usize },
 }
 
-/// Send 에러
-#[derive(Debug)]
+/// Send error.
+#[derive(Error, Debug, Clone)]
 pub enum SendError {
+    #[error("connection broken: receiver no longer exists")]
     ConnectionBroken,
+    #[error("receiver queue is full")]
     QueueFull,
+}
+
+/// Receive error.
+#[derive(Error, Debug, Clone)]
+pub enum ReceiveError {
+    #[error("no data available")]
+    Empty,
+    #[error("connection broken: sender no longer exists")]
+    ConnectionBroken,
 }

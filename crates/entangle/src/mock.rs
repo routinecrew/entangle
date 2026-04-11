@@ -1,2 +1,2 @@
-// contracts/mock.rs에서 복사 — 독립 개발용
+// Re-export contracts for independent development.
 pub use crate::contracts::*;

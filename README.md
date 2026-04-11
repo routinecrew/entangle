@@ -296,22 +296,36 @@ cargo +nightly miri test --workspace
 ## Roadmap
 
 - [x] Project scaffold & workspace setup
-- [ ] Platform layer (SharedMemory, FileLock, EventFd)
-- [ ] Lock-free primitives (UniqueIndexSet, SpscQueue) + Loom tests
-- [ ] Transport layer (ZeroCopyChannel, DataSegment)
-- [ ] Service layer + PubSub/Event patterns
-- [ ] ZeroCopySafe derive macro
-- [ ] Request-Response & Blackboard patterns
-- [ ] WaitSet (reactor)
-- [ ] Cross-process integration tests
-- [ ] Benchmarks vs. iceoryx2
+- [x] Platform layer (SharedMemory, FileLock, EventFd)
+- [x] Lock-free primitives (UniqueIndexSet, SpscQueue) + Loom tests
+- [x] Transport layer (ZeroCopyChannel, DataSegment)
+- [x] Service layer + PubSub/Event patterns
+- [x] ZeroCopySafe derive macro
+- [x] Request-Response & Blackboard patterns
+- [x] WaitSet (reactor)
+- [x] Cross-process integration tests
+- [x] Benchmarks (criterion)
+- [x] CI/CD (GitHub Actions)
 - [ ] `no_std` support (feature-gated)
+- [ ] Windows support
+
+---
+
+## Platform Support
+
+| Platform | Architecture | Status |
+|----------|-------------|--------|
+| Linux | x86_64, aarch64 | Supported |
+| macOS | x86_64, Apple Silicon | Supported |
+| Windows | - | Not supported (POSIX shm dependency) |
+
+**macOS limitations:** `shm_open` name limited to 31 characters; no `/dev/shm` filesystem.
 
 ---
 
 ## Contributing
 
-Contributions are welcome! Each crate is independently testable — pick any layer that interests you.
+Contributions are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ```bash
 cargo build --workspace

@@ -1,7 +1,12 @@
 [package]
 name = "entangle-lockfree"
-version = "0.1.0"
-edition = "2021"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+keywords.workspace = true
+categories.workspace = true
 description = "Lock-free data structures for entangle zero-copy IPC"
 
 [dependencies]
@@ -10,3 +15,6 @@ tracing = { workspace = true }
 [dev-dependencies]
 loom = { workspace = true }
 proptest = { workspace = true }
+
+[lints.rust]
+unexpected_cfgs = { level = "warn", check-cfg = ['cfg(loom)'] }

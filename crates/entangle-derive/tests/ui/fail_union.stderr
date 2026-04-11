@@ -1,0 +1,5 @@
+error: ZeroCopySafe cannot be derived for unions
+ --> tests/ui/fail_union.rs:5:7
+  |
+5 | union BadUnion {
+  |       ^^^^^^^^

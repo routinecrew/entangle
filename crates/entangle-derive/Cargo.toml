@@ -1,7 +1,10 @@
 [package]
 name = "entangle-derive"
-version = "0.1.0"
-edition = "2021"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
 description = "Derive macros for entangle zero-copy IPC (ZeroCopySafe)"
 
 [lib]
@@ -11,3 +14,7 @@ proc-macro = true
 proc-macro2 = { workspace = true }
 quote = { workspace = true }
 syn = { workspace = true }
+
+[dev-dependencies]
+trybuild = "1.0"
+entangle = { path = "../entangle" }
